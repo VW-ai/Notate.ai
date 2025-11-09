@@ -4,7 +4,6 @@ import Features from "@/components/features"
 import TripleView from "@/components/triple-view"
 import VideoShowcase from "@/components/video-showcase"
 import Team from "@/components/team"
-import CTA from "@/components/cta"
 import Footer from "@/components/footer"
 
 export default function Home() {
@@ -16,7 +15,6 @@ export default function Home() {
       <TripleView />
       <VideoShowcase />
       <Team />
-      <CTA />
       <Footer />
     </main>
   )
