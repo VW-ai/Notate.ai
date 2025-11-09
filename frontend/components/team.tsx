@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { withAssetPrefix } from "@/lib/assetPrefix"
 
 const teamMembers = [
   {
@@ -6,7 +7,7 @@ const teamMembers = [
     role: "Co-founder",
     bio: "BS in Data Science & Math from University of Michigan. MS in Data Science at Columbia University",
     expertise: ["Badminton", "Fencing", "Piano"],
-    image: "founder1.jpg",
+    image: "/founder1.jpg",
   },
   {
     name: "Founding Member 2",
@@ -40,7 +41,7 @@ export default function Team() {
               {/* Image Container */}
               <div className="mb-6 overflow-hidden rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 relative h-80">
                 <Image
-                  src={member.image || "/placeholder.svg"}
+                  src={withAssetPrefix(member.image || "/placeholder.svg")}
                   alt={member.name}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"

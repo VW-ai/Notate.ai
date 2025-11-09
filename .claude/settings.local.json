@@ -4,7 +4,12 @@
       "Bash(cp:*)",
       "Bash(xargs:*)",
       "Bash(npm run build:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(NODE_ENV=production npm run build:*)",
+      "Bash(export NODE_ENV=production)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []

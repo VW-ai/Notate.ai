@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
+import { withAssetPrefix } from "@/lib/assetPrefix"
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -13,7 +14,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center gap-3 group">
             <Image
-              src="/notate-logo.png"
+              src={withAssetPrefix("/notate-logo.png")}
               alt="Notate Logo"
               width={48}
               height={48}

@@ -4,6 +4,7 @@ import { Zap, Clock, ArrowRight, type LucideIcon } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 import { ImageLightbox } from "./image-lightbox"
+import { withAssetPrefix } from "@/lib/assetPrefix"
 
 interface Substep {
   description: string
@@ -142,10 +143,10 @@ export default function Features() {
                           {/* Main Screenshot */}
                           <div
                             className="relative overflow-hidden rounded-lg border border-border/40 bg-secondary/10 cursor-pointer hover:ring-2 hover:ring-primary/50 transition-all"
-                            onClick={() => setLightboxImage({ src: step.image, alt: step.label })}
+                            onClick={() => setLightboxImage({ src: withAssetPrefix(step.image), alt: step.label })}
                           >
                             <Image
-                              src={step.image}
+                              src={withAssetPrefix(step.image)}
                               alt={step.label}
                               width={800}
                               height={600}
@@ -164,11 +165,11 @@ export default function Features() {
                                   <div
                                     key={substepIndex}
                                     className="flex gap-3 items-start cursor-pointer hover:bg-secondary/20 p-2 rounded-lg transition-colors"
-                                    onClick={() => setLightboxImage({ src: substep.image, alt: substep.description })}
+                                    onClick={() => setLightboxImage({ src: withAssetPrefix(substep.image), alt: substep.description })}
                                   >
                                     <div className="flex-shrink-0 w-16 h-16 rounded border border-border/40 overflow-hidden bg-secondary/10">
                                       <Image
-                                        src={substep.image}
+                                        src={withAssetPrefix(substep.image)}
                                         alt={substep.description}
                                         width={64}
                                         height={64}

@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { BarChart3, List, Calendar } from "lucide-react"
 import Image from "next/image"
+import { withAssetPrefix } from "@/lib/assetPrefix"
 
 export default function TripleView() {
   return (
@@ -48,7 +49,7 @@ export default function TripleView() {
               <CardContent>
                 <div className="relative rounded-lg overflow-hidden border border-border/40">
                   <Image
-                    src="/Timeline.png"
+                    src={withAssetPrefix("/Timeline.png")}
                     alt="Timeline view showing daily schedule organized by time periods"
                     width={1600}
                     height={900}
@@ -68,7 +69,7 @@ export default function TripleView() {
               <CardContent>
                 <div className="relative rounded-lg overflow-hidden border border-border/40">
                   <Image
-                    src="/List.png"
+                    src={withAssetPrefix("/List.png")}
                     alt="List view showing tagged events, notes, and filtering options"
                     width={1600}
                     height={900}
@@ -88,7 +89,7 @@ export default function TripleView() {
               <CardContent className="space-y-0">
                 <div className="relative rounded-t-lg overflow-hidden border-b-0 border border-border/40">
                   <Image
-                    src="/Analysis1.png"
+                    src={withAssetPrefix("/Analysis1.png")}
                     alt="Analytics overview showing time tracking and tag distribution"
                     width={1600}
                     height={500}
@@ -97,7 +98,7 @@ export default function TripleView() {
                 </div>
                 <div className="relative rounded-b-lg overflow-hidden border-t-0 border border-border/40">
                   <Image
-                    src="/Analysis2.png"
+                    src={withAssetPrefix("/Analysis2.png")}
                     alt="Detailed analytics with heatmaps, focus sessions, and insights"
                     width={1600}
                     height={500}

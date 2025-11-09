@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Mail } from "lucide-react"
 import Image from "next/image"
+import { withAssetPrefix } from "@/lib/assetPrefix"
 
 export default function Hero() {
   return (
@@ -60,7 +61,7 @@ export default function Hero() {
         <div className="paper-card p-4 md:p-8">
           <div className="relative rounded-lg overflow-hidden border border-border/40">
             <Image
-              src="/Overview.png"
+              src={withAssetPrefix("/Overview.png")}
               alt="Notate app overview showing timeline and daily schedule"
               width={1600}
               height={900}
