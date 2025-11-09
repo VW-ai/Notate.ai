@@ -4,7 +4,7 @@ import { withAssetPrefix } from "@/lib/assetPrefix"
 const teamMembers = [
   {
     name: "Founding Member 1",
-    role: "Co-founder",
+    role: "Co-founder & Product Lead",
     bio: "BS in Data Science & Math from University of Michigan. MS in Data Science at Columbia University",
     expertise: ["Badminton", "Fencing", "Piano"],
     image: "/founder1.jpg",
