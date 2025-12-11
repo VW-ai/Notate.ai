@@ -160,6 +160,8 @@ Row 3: (empty)   | (empty)                    | (empty)
 
 ## Step 5: Configure Your Website
 
+### For Local Development
+
 1. In your project, create a `.env.local` file in the `frontend` folder:
 
 ```env
@@ -168,6 +170,17 @@ NEXT_PUBLIC_WAITLIST_API_URL=your_web_app_url_here
 
 2. Replace `your_web_app_url_here` with the URL you copied in Step 3
 3. Restart your development server
+
+### For GitHub Pages Deployment
+
+1. Go to your GitHub repository
+2. Click **Settings** → **Secrets and variables** → **Actions**
+3. Click **New repository secret**
+4. Name: `NEXT_PUBLIC_WAITLIST_API_URL`
+5. Value: Your Google Apps Script Web App URL (from Step 3)
+6. Click **Add secret**
+7. The GitHub Actions workflow (`.github/workflows/deploy.yml`) will automatically use this secret during build
+8. Push your code to trigger a new deployment
 
 ## Testing
 
