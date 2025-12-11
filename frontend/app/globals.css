@@ -179,3 +179,19 @@
 .text-balance-tight {
   text-wrap: balance;
 }
+
+/* React Slot Counter Styles */
+.slot-counter-container {
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.slot-counter-character-wrapper {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.slot-counter-character-list {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
