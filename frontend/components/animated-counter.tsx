@@ -9,32 +9,42 @@ interface AnimatedCounterProps {
 }
 
 export function AnimatedCounter({ value, duration = 1500 }: AnimatedCounterProps) {
-  const [hasAnimated, setHasAnimated] = useState(false)
-  const [displayValue, setDisplayValue] = useState<number>(9999)
-  const [finalValue, setFinalValue] = useState<number | null>(null)
+  const [animationState, setAnimationState] = useState<'pre' | 'animating' | 'complete'>('pre')
+  const [finalValue, setFinalValue] = useState<number>(9999)
 
   useEffect(() => {
-    // Only animate once on initial mount
-    if (!hasAnimated) {
-      // Wait a bit for cache/API to load, then capture the value
-      const timer = setTimeout(() => {
+    if (animationState === 'pre') {
+      // Wait for cache/API to load, then start animation
+      const startTimer = setTimeout(() => {
         setFinalValue(value)
-        setDisplayValue(value)
-        setHasAnimated(true)
+        setAnimationState('animating')
+
+        // Mark as complete after animation duration
+        const completeTimer = setTimeout(() => {
+          setAnimationState('complete')
+        }, duration + 100) // Extra 100ms buffer
+
+        return () => clearTimeout(completeTimer)
       }, 300)
 
-      return () => clearTimeout(timer)
+      return () => clearTimeout(startTimer)
     }
-  }, [hasAnimated, value])
+  }, [animationState, value, duration])
 
-  // Show 9999 before animation starts
-  if (!hasAnimated || finalValue === null) {
+  // Show static 9999 before animation
+  if (animationState === 'pre') {
     return <span className="inline-block" style={{ minWidth: '200px' }}>9,999</span>
   }
 
+  // Show static final value after animation completes
+  if (animationState === 'complete') {
+    return <span className="inline-block">{finalValue.toLocaleString()}</span>
+  }
+
+  // Show animation
   return (
     <SlotCounter
-      value={displayValue.toLocaleString()}
+      value={finalValue.toLocaleString()}
       startValue="9999"
       duration={duration / 1000}
       animateOnVisible={false}
