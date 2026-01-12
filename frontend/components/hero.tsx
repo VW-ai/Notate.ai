@@ -129,18 +129,6 @@ export default function Hero() {
           localStorage.setItem(WAITLIST_COUNT_KEY, newCount.toString())
         }}
       />
-
-      {/* Hero visual - Demo GIF placeholder */}
-      <div className="mt-8 mx-auto max-w-6xl px-4">
-        <div className="glass-card p-4 md:p-8">
-          <MediaPlaceholder
-            type="gif"
-            name="hero-demo.gif"
-            aspectRatio="16/9"
-            description="Overlay input -> Graph view -> Ask response"
-          />
-        </div>
-      </div>
     </section>
   )
 }

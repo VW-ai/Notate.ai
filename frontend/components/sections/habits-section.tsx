@@ -20,7 +20,8 @@ export function HabitsSection() {
           <MediaPlaceholder
             type="gif"
             name="habit.gif"
-            aspectRatio="16/9"
+            width={800}
+            height={450}
             description="Habits page overview + creating a new habit"
           />
 

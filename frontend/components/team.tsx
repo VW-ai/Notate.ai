@@ -4,14 +4,14 @@ import { SectionHeader } from "@/components/ui/section-header"
 
 const teamMembers = [
   {
-    name: "Founding Member 1",
+    name: "Victor Zhang",
     role: "Co-founder & Product Lead",
     bio: "BS in Data Science & Math from University of Michigan. MS in Data Science at Columbia University",
     expertise: ["Badminton", "Fencing", "Piano"],
     image: "/founder1.jpg",
   },
   {
-    name: "Founding Member 2",
+    name: "Wayne Wang",
     role: "Co-founder & Technical Lead",
     bio: "BS in Computer Science & Math from NYU, MS in Computer Science at UC San Diego",
     expertise: ["Basketball", "Poetry", "Sleep"],

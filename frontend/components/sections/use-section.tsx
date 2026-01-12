@@ -9,6 +9,8 @@ interface UseCase {
   description: string
   gifName: string
   icon: React.ElementType
+  width: number
+  height: number
 }
 
 const useCases: UseCase[] = [
@@ -18,6 +20,8 @@ const useCases: UseCase[] = [
       "Natural language queries across all your captured content. AI finds and summarizes relevant information.",
     gifName: "use-01-ask.gif",
     icon: MessageCircle,
+    width: 800,
+    height: 450,
   },
   {
     title: "WeChat Assistant",
@@ -25,6 +29,8 @@ const useCases: UseCase[] = [
       "Screenshot a conversation. Get smart reply suggestions in your preferred tone and language.",
     gifName: "use-02-wechat.gif",
     icon: MessageSquare,
+    width: 720,
+    height: 405,
   },
   {
     title: "Email Composer",
@@ -32,6 +38,8 @@ const useCases: UseCase[] = [
       "Draft professional emails with context from your knowledge base. One click to accept or modify.",
     gifName: "use-03-gmail.gif",
     icon: Mail,
+    width: 720,
+    height: 405,
   },
 ]
 
@@ -47,14 +55,14 @@ export function UseSection() {
           className="mx-auto"
         />
 
-        <div className="mt-16 grid md:grid-cols-3 gap-8">
+        <div className="mt-16 grid grid-cols-1 gap-8">
           {useCases.map((useCase, i) => (
             <div key={i} className="glass-card-hover p-6 group">
-              {/* GIF */}
               <MediaPlaceholder
                 type="gif"
                 name={useCase.gifName}
-                aspectRatio="4/3"
+                width={useCase.width}
+                height={useCase.height}
               />
 
               {/* Title with icon */}

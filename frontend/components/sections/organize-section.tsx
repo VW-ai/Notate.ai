@@ -23,7 +23,8 @@ export function OrganizeSection() {
             <MediaPlaceholder
               type="gif"
               name="organize-01-graph.gif"
-              aspectRatio="16/9"
+              width={800}
+              height={584}
               description="Knowledge graph zoom out reveal"
             />
             <div className="mt-6 flex items-start gap-4">
@@ -44,7 +45,8 @@ export function OrganizeSection() {
               <MediaPlaceholder
                 type="image"
                 name="organize-02-timeline.png"
-                aspectRatio="16/10"
+                width={1229}
+                height={897}
               />
               <div className="mt-4 flex items-start gap-3">
                 <Calendar className="h-5 w-5 text-gray-400 mt-0.5" />
@@ -62,7 +64,8 @@ export function OrganizeSection() {
               <MediaPlaceholder
                 type="image"
                 name="organize-03-types.png"
-                aspectRatio="16/10"
+                width={1229}
+                height={897}
               />
               <div className="mt-4 flex items-start gap-3">
                 <Layers className="h-5 w-5 text-gray-400 mt-0.5" />

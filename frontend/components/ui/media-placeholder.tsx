@@ -1,42 +1,62 @@
-import { Film, ImageIcon } from "lucide-react"
+import Image from "next/image"
+import { cn } from "@/lib/utils"
 
 interface MediaPlaceholderProps {
   type: "gif" | "image"
   name: string
   aspectRatio?: string
+  width?: number
+  height?: number
   description?: string
   className?: string
+  objectFit?: "cover" | "contain"
+  priority?: boolean
 }
 
 export function MediaPlaceholder({
   type,
   name,
-  aspectRatio = "16/9",
+  aspectRatio,
+  width,
+  height,
   description,
   className,
+  objectFit = "contain",
+  priority = false,
 }: MediaPlaceholderProps) {
+  const computedAspectRatio =
+    aspectRatio || (width && height ? `${width}/${height}` : "16/9")
+  const isGif = type === "gif" || name.toLowerCase().endsWith(".gif")
+  const altText = description || name
+
   return (
     <div
-      className={`relative bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden ${className || ""}`}
-      style={{ aspectRatio }}
+      className={cn(
+        "relative overflow-hidden rounded-2xl border border-gray-200/70 bg-gray-50 shadow-sm",
+        "before:absolute before:inset-0 before:bg-gradient-to-br before:from-white before:via-gray-50 before:to-gray-100",
+        className
+      )}
+      style={{ aspectRatio: computedAspectRatio }}
     >
-      {/* Dot pattern background */}
-      <div
-        className="absolute inset-0 opacity-30 dot-pattern"
+      <Image
+        src={`/${name}`}
+        alt={altText}
+        fill
+        sizes="(min-width: 1280px) 960px, (min-width: 768px) 80vw, 100vw"
+        className={cn(
+          "relative z-10 object-cover transition-transform duration-300",
+          objectFit === "contain" && "object-contain",
+          "group-hover:scale-[1.01]"
+        )}
+        unoptimized={isGif}
+        priority={priority}
       />
 
-      {/* Placeholder content */}
-      <div className="relative text-center p-6">
-        {type === "gif" ? (
-          <Film className="h-12 w-12 text-gray-300 mx-auto" />
-        ) : (
-          <ImageIcon className="h-12 w-12 text-gray-300 mx-auto" />
-        )}
-        <p className="mt-3 text-sm font-medium text-gray-400">{name}</p>
-        {description && (
-          <p className="mt-1 text-xs text-gray-300">{description}</p>
-        )}
-      </div>
+      {description && (
+        <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/50 via-black/25 to-transparent px-4 py-3 text-sm font-medium text-white drop-shadow">
+          {description}
+        </div>
+      )}
     </div>
   )
 }

@@ -9,6 +9,8 @@ interface CaptureDemo {
   description: string
   gifName: string
   icon: React.ElementType
+  width: number
+  height: number
 }
 
 const captureDemos: CaptureDemo[] = [
@@ -18,6 +20,8 @@ const captureDemos: CaptureDemo[] = [
       "Press your hotkey, type your thought. Captured instantly with a cute kaomoji.",
     gifName: "capture-01-thought.gif",
     icon: Zap,
+    width: 800,
+    height: 450,
   },
   {
     title: "Smart Links",
@@ -25,6 +29,8 @@ const captureDemos: CaptureDemo[] = [
       "Paste a YouTube link. Get it categorized with smart suggestions automatically.",
     gifName: "capture-02-youtube.gif",
     icon: Link2,
+    width: 800,
+    height: 450,
   },
   {
     title: "Long Content",
@@ -32,6 +38,8 @@ const captureDemos: CaptureDemo[] = [
       "Capture articles or long text. Content auto-collapses into a clean chip.",
     gifName: "capture-03-longtext.gif",
     icon: FileText,
+    width: 800,
+    height: 450,
   },
 ]
 
@@ -48,18 +56,17 @@ export function CaptureSection() {
           className="mx-auto"
         />
 
-        {/* Three column GIF showcase */}
-        <div className="mt-16 grid md:grid-cols-3 gap-8">
+        {/* One-per-row showcase for clarity */}
+        <div className="mt-16 grid grid-cols-1 gap-8">
           {captureDemos.map((demo, i) => (
             <div key={i} className="glass-card-hover p-6 group">
-              {/* GIF placeholder */}
               <MediaPlaceholder
                 type="gif"
                 name={demo.gifName}
-                aspectRatio="4/3"
+                width={demo.width}
+                height={demo.height}
               />
 
-              {/* Title with icon */}
               <div className="mt-5 flex items-start gap-3">
                 <demo.icon className="h-5 w-5 text-gray-400 mt-0.5" />
                 <div>
