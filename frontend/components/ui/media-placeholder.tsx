@@ -1,6 +1,8 @@
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 
+const basePath = process.env.NODE_ENV === 'production' ? '/Notate.ai' : ''
+
 interface MediaPlaceholderProps {
   type: "gif" | "image"
   name: string
@@ -39,7 +41,7 @@ export function MediaPlaceholder({
       style={{ aspectRatio: computedAspectRatio }}
     >
       <Image
-        src={`/${name}`}
+        src={`${basePath}/${name}`}
         alt={altText}
         fill
         sizes="(min-width: 1280px) 960px, (min-width: 768px) 80vw, 100vw"
