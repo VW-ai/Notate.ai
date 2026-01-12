@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Mail, Users } from "lucide-react"
-import Image from "next/image"
-import { withAssetPrefix } from "@/lib/assetPrefix"
+import { Mail, Users, ArrowDown } from "lucide-react"
 import { WaitlistModal } from "@/components/waitlist-modal"
 import { AnimatedCounter } from "@/components/animated-counter"
+import { MediaPlaceholder } from "@/components/ui/media-placeholder"
 
-const WAITLIST_COUNT_KEY = 'notate_waitlist_count'
+const WAITLIST_COUNT_KEY = "notate_waitlist_count"
 const DEFAULT_COUNT = 1032
 
 export default function Hero() {
@@ -52,68 +51,69 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden px-6 py-20 md:py-32">
-      {/* Background gradient accent */}
-      <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 via-transparent to-transparent pointer-events-none" />
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-transparent pointer-events-none" />
 
-      <div className="relative mx-auto max-w-4xl">
+      <div className="relative mx-auto max-w-5xl">
         <div className="text-center">
           {/* Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/60 bg-secondary/50 px-4 py-1.5 text-sm text-foreground/70">
-            <span className="h-2 w-2 rounded-full bg-primary" />
-            macOS Productivity Reimagined
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200/60 bg-white/80 backdrop-blur-sm px-4 py-1.5 text-sm text-gray-600">
+            <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+            Your Personal Knowledge Layer
           </div>
 
           {/* Main heading */}
-          <h1 className="mb-6 text-4xl md:text-6xl font-bold text-balance text-foreground leading-tight">
-            Capture Your Thoughts,
+          <h1 className="mb-6 text-4xl md:text-6xl font-bold text-balance text-gray-900 leading-tight">
+            Capture anything,
             <br />
-            <span className="gradient-text">Organize with AI</span>
+            <span className="text-gray-400">Find everything.</span>
           </h1>
 
           {/* Subheading */}
-          <p className="mb-8 max-w-2xl mx-auto text-lg text-muted-foreground text-balance leading-relaxed">
-            Notate works invisibly in the background. Simply type /// anywhere, and let AI transform your scattered
-            thoughts into organized notes & actions.
+          <p className="mb-8 max-w-2xl mx-auto text-lg text-gray-600 text-balance leading-relaxed">
+            Zero-friction capture. Smart organization. Instant recall when you
+            need it.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="btn-primary"
               onClick={() => setIsWaitlistOpen(true)}
             >
               <Mail className="mr-2 h-4 w-4" />
               Join Waitlist
             </Button>
-            <Button size="lg" variant="outline" className="border-border/60 bg-transparent" asChild>
-              <a href="#video">
-                Watch Demo
+            <Button size="lg" className="btn-secondary" asChild>
+              <a href="#capture">
+                <ArrowDown className="mr-2 h-4 w-4" />
+                See how it works
               </a>
             </Button>
           </div>
 
           {/* Trust signal */}
-          <p className="mt-12 text-xs text-muted-foreground">
+          <p className="mt-8 text-xs text-gray-500">
             Be the first to know when Notate launches. No spam, ever.
           </p>
         </div>
       </div>
 
       {/* Waitlist Counter */}
-      <div className="relative mx-auto max-w-4xl mt-16 mb-8">
-        <div className="flex items-center justify-center gap-3 py-6 px-8 rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20">
-          <Users className="h-8 w-8 text-primary" />
+      <div className="relative mx-auto max-w-4xl mt-12 mb-8">
+        <div className="glass-card flex items-center justify-center gap-4 py-6 px-8">
+          <Users className="h-8 w-8 text-gray-400" />
           <div className="text-center">
             <div className="flex items-baseline gap-2">
-              <span className="text-5xl md:text-6xl font-bold text-[#c97653] tabular-nums">
+              <span className="text-5xl md:text-6xl font-bold text-gray-900 tabular-nums">
                 <AnimatedCounter value={waitlistCount} duration={1500} />
               </span>
-              <span className="text-2xl font-semibold text-muted-foreground">
+              <span className="text-2xl font-semibold text-gray-400">
                 people
               </span>
             </div>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-sm text-gray-500 mt-1">
               already joined the waitlist
             </p>
           </div>
@@ -130,19 +130,15 @@ export default function Hero() {
         }}
       />
 
-      {/* Hero visual - Overview screenshot */}
+      {/* Hero visual - Demo GIF placeholder */}
       <div className="mt-8 mx-auto max-w-6xl px-4">
-        <div className="paper-card p-4 md:p-8">
-          <div className="relative rounded-lg overflow-hidden border border-border/40">
-            <Image
-              src={withAssetPrefix("/Overview.png")}
-              alt="Notate app overview showing timeline and daily schedule"
-              width={1600}
-              height={900}
-              className="w-full h-auto"
-              priority
-            />
-          </div>
+        <div className="glass-card p-4 md:p-8">
+          <MediaPlaceholder
+            type="gif"
+            name="hero-demo.gif"
+            aspectRatio="16/9"
+            description="Overlay input -> Graph view -> Ask response"
+          />
         </div>
       </div>
     </section>

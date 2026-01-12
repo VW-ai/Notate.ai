@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Notate - Capture Your Thoughts, Organize with AI",
-  description: "macOS productivity app that helps you capture thoughts instantly with /// and track time effortlessly with ;;;. AI-powered note taking and time tracking.",
+  title: "Notate - Your Personal Knowledge Layer",
+  description: "Capture anything with a hotkey. AI organizes your thoughts into a searchable knowledge base. Ask questions, refine messages, and never lose an idea again.",
 };
 
 export default function RootLayout({

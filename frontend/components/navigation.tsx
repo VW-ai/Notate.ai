@@ -5,11 +5,18 @@ import { Menu, X } from "lucide-react"
 import Image from "next/image"
 import { withAssetPrefix } from "@/lib/assetPrefix"
 
+const navItems = [
+  { href: "#capture", label: "Capture" },
+  { href: "#organize", label: "Organize" },
+  { href: "#use", label: "Use" },
+  { href: "#team", label: "Team" },
+]
+
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 glass-nav">
       <div className="mx-auto max-w-7xl px-6 py-4">
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center gap-3 group">
@@ -20,46 +27,45 @@ export default function Navigation() {
               height={48}
               className="h-12 w-12 rounded-lg transition-transform group-hover:scale-105"
             />
-            <span className="text-xl font-bold text-foreground">Notate</span>
+            <span className="text-xl font-bold text-gray-900">Notate</span>
           </a>
 
           {/* Desktop menu */}
           <div className="hidden items-center gap-8 md:flex">
-            <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition">
-              Features
-            </a>
-            <a href="#views" className="text-sm text-muted-foreground hover:text-foreground transition">
-              Views
-            </a>
-            <a href="#team" className="text-sm text-muted-foreground hover:text-foreground transition">
-              Team
-            </a>
-            <a href="#video" className="text-sm text-muted-foreground hover:text-foreground transition">
-              Demo
-            </a>
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
           </div>
 
           {/* Mobile menu button */}
-          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-2" aria-label="Toggle menu">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100/80 transition-colors"
+            aria-label="Toggle menu"
+          >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile menu */}
         {isOpen && (
-          <div className="mt-4 flex flex-col gap-4 border-t border-border/40 pt-4 md:hidden">
-            <a href="#features" className="text-sm text-foreground">
-              Features
-            </a>
-            <a href="#views" className="text-sm text-foreground">
-              Views
-            </a>
-            <a href="#team" className="text-sm text-foreground">
-              Team
-            </a>
-            <a href="#video" className="text-sm text-foreground">
-              Demo
-            </a>
+          <div className="mt-4 flex flex-col gap-4 border-t border-gray-200/60 pt-4 md:hidden">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-sm text-gray-900 hover:text-gray-600 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
           </div>
         )}
       </div>
