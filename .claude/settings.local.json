@@ -10,7 +10,8 @@
       "Bash(NODE_ENV=production npm run build:*)",
       "Bash(export NODE_ENV=production)",
       "Bash(find:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(ls:*)"
     ],
     "deny": [],
     "ask": []
