@@ -1,4 +1,6 @@
 import { Mail, ExternalLink } from "lucide-react"
+import Image from "next/image"
+import { withAssetPrefix } from "@/lib/assetPrefix"
 
 export default function Footer() {
   return (
@@ -8,10 +10,14 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 gap-12 mb-12">
           {/* Brand & Description */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-500">
-                <span className="text-sm font-bold text-white">N</span>
-              </div>
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src={withAssetPrefix("/notate-logo.png")}
+                alt="Notate Logo"
+                width={32}
+                height={32}
+                className="h-8 w-8 rounded-lg"
+              />
               <span className="text-xl font-bold text-gray-900">Notate</span>
             </div>
             <p className="text-gray-600 leading-relaxed max-w-md">
