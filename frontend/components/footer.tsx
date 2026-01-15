@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200/60 bg-white/80 backdrop-blur-xl px-6 py-12">
+    <footer className="border-t border-gray-200 bg-white px-6 py-12">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           <div>
@@ -88,7 +88,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-200/60 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-gray-900">
               <span className="text-xs font-bold text-white">N</span>
@@ -96,7 +96,7 @@ export default function Footer() {
             <span className="font-semibold text-gray-900">Notate</span>
           </div>
           <p className="text-sm text-gray-500">
-            © 2025 Notate. All rights reserved. Crafted for macOS.
+            © VW.ai (•‿•) All rights reserved. Crafted for macOS.
           </p>
         </div>
       </div>

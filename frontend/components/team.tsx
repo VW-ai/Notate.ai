@@ -1,6 +1,9 @@
+"use client"
+
 import Image from "next/image"
 import { withAssetPrefix } from "@/lib/assetPrefix"
 import { SectionHeader } from "@/components/ui/section-header"
+import { ScrollAnimate } from "@/components/ui/scroll-animate"
 
 const teamMembers = [
   {
@@ -24,58 +27,67 @@ export default function Team() {
     <section id="team" className="px-6 py-20 md:py-32 section-alt">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <SectionHeader
-          badge="VW.ai"
-          title="Meet the Team"
-          description="We innovate interfaces between people and information. We empower interfaces with Artificial Intelligence."
-          align="center"
-          className="mx-auto mb-16"
-        />
+        <ScrollAnimate>
+          <SectionHeader
+            badge="VW.ai"
+            kaomoji="(•‿•)"
+            title="Built by builders"
+            description="We innovate interfaces between people and information. We empower interfaces with Artificial Intelligence."
+            align="center"
+            className="mx-auto mb-16"
+          />
+        </ScrollAnimate>
 
         {/* Team Grid */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {teamMembers.map((member, index) => (
-            <div
-              key={index}
-              className="group glass-card-hover p-8"
-            >
-              {/* Image Container */}
-              <div className="mb-6 overflow-hidden rounded-xl bg-gray-100 relative h-80">
-                <Image
-                  src={withAssetPrefix(member.image || "/placeholder.svg")}
-                  alt={member.name}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  style={
-                    index === 0
-                      ? { objectPosition: "center 30%" }
-                      : { objectPosition: "center top" }
-                  }
-                />
-              </div>
+            <ScrollAnimate key={index} delay={index * 100}>
+              <div className="group card-minimal-hover p-8">
+                {/* Image Container */}
+                <div className="mb-6 overflow-hidden rounded-xl bg-gray-100 relative h-80">
+                  <Image
+                    src={withAssetPrefix(member.image || "/placeholder.svg")}
+                    alt={member.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    style={
+                      index === 0
+                        ? { objectPosition: "center 30%" }
+                        : { objectPosition: "center top" }
+                    }
+                  />
+                </div>
 
-              {/* Content */}
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-1">
-                  {member.name}
-                </h3>
-                <p className="text-blue-600 font-semibold mb-4">{member.role}</p>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  {member.bio}
-                </p>
+                {/* Content */}
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                    {member.name}
+                  </h3>
+                  <p className="text-blue-600 font-semibold mb-4">{member.role}</p>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    {member.bio}
+                  </p>
 
-                {/* Expertise Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {member.expertise.map((skill, skillIndex) => (
-                    <span key={skillIndex} className="tag-pill">
-                      {skill}
-                    </span>
-                  ))}
+                  {/* Expertise Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {member.expertise.map((skill, skillIndex) => (
+                      <span key={skillIndex} className="tag-pill">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollAnimate>
           ))}
         </div>
+
+        {/* Shipping status */}
+        <ScrollAnimate>
+          <p className="text-center text-sm text-gray-500 mt-12">
+            Shipping weekly (⌐■_■)
+          </p>
+        </ScrollAnimate>
       </div>
     </section>
   )

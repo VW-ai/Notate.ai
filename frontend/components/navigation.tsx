@@ -4,22 +4,24 @@ import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
 import { withAssetPrefix } from "@/lib/assetPrefix"
+import { useActiveSection, SectionId } from "@/lib/useActiveSection"
 
-const navItems = [
-  { href: "#capture", label: "Capture" },
-  { href: "#organize", label: "Organize" },
-  { href: "#use", label: "Use" },
-  { href: "#team", label: "Team" },
+const navItems: { href: string; label: string; id: SectionId }[] = [
+  { href: "#capture", label: "Capture", id: "capture" },
+  { href: "#organize", label: "Organize", id: "organize" },
+  { href: "#use", label: "Use", id: "use" },
+  { href: "#team", label: "Team", id: "team" },
 ]
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const activeSection = useActiveSection()
 
   return (
-    <nav className="sticky top-0 z-50 glass-nav">
+    <nav className="sticky top-0 z-50 nav-minimal">
       <div className="mx-auto max-w-7xl px-6 py-4">
         <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center gap-3 group">
+          <a href="#hero" className="flex items-center gap-3 group">
             <Image
               src={withAssetPrefix("/notate-logo.png")}
               alt="Notate Logo"
@@ -36,7 +38,11 @@ export default function Navigation() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                className={`text-sm transition-colors relative py-1 ${
+                  activeSection === item.id
+                    ? "text-gray-900 nav-link-active"
+                    : "text-gray-600 hover:text-gray-900"
+                }`}
               >
                 {item.label}
               </a>
@@ -46,7 +52,7 @@ export default function Navigation() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100/80 transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -55,7 +61,7 @@ export default function Navigation() {
 
         {/* Mobile menu */}
         {isOpen && (
-          <div className="mt-4 flex flex-col gap-4 border-t border-gray-200/60 pt-4 md:hidden">
+          <div className="mt-4 flex flex-col gap-4 border-t border-gray-200 pt-4 md:hidden">
             {navItems.map((item) => (
               <a
                 key={item.href}

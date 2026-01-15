@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Mail, Users, ArrowDown } from "lucide-react"
+import { Mail, Users, ArrowDown, ChevronDown } from "lucide-react"
 import { WaitlistModal } from "@/components/waitlist-modal"
 import { AnimatedCounter } from "@/components/animated-counter"
 import { MediaPlaceholder } from "@/components/ui/media-placeholder"
@@ -50,29 +50,28 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden px-6 py-20 md:py-32">
+    <section id="hero" className="relative overflow-hidden px-6 py-20 md:py-32">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-transparent pointer-events-none" />
 
       <div className="relative mx-auto max-w-5xl">
         <div className="text-center">
-          {/* Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200/60 bg-white/80 backdrop-blur-sm px-4 py-1.5 text-sm text-gray-600">
-            <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-            Your Personal Knowledge Layer
+          {/* Badge with kaomoji */}
+          <div className="mb-6 badge-minimal inline-flex">
+            <span>(•‿•)</span>
+            <span>Capture anything. Find everything.</span>
           </div>
 
-          {/* Main heading */}
+          {/* Main heading with rainbow accent */}
           <h1 className="mb-6 text-4xl md:text-6xl font-bold text-balance text-gray-900 leading-tight">
             Capture anything,
             <br />
-            <span className="text-gray-400">Find everything.</span>
+            <span className="rainbow-text">Find everything.</span>
           </h1>
 
-          {/* Subheading */}
+          {/* Subheading with kaomoji */}
           <p className="mb-8 max-w-2xl mx-auto text-lg text-gray-600 text-balance leading-relaxed">
-            Zero-friction capture. Smart organization. Instant recall when you
-            need it.
+            Zero friction. Keyboard-first. Instant recall. <span className="text-gray-900">(⌐■_■)</span>
           </p>
 
           {/* CTA Buttons */}
@@ -83,7 +82,7 @@ export default function Hero() {
               onClick={() => setIsWaitlistOpen(true)}
             >
               <Mail className="mr-2 h-4 w-4" />
-              Join Waitlist
+              Join waitlist (•‿•)✓
             </Button>
             <Button size="lg" className="btn-secondary" asChild>
               <a href="#capture">
@@ -102,7 +101,7 @@ export default function Hero() {
 
       {/* Waitlist Counter */}
       <div className="relative mx-auto max-w-4xl mt-12 mb-8">
-        <div className="glass-card flex items-center justify-center gap-4 py-6 px-8">
+        <div className="card-minimal flex items-center justify-center gap-4 py-6 px-8">
           <Users className="h-8 w-8 text-gray-400" />
           <div className="text-center">
             <div className="flex items-baseline gap-2">
@@ -118,6 +117,14 @@ export default function Hero() {
             </p>
           </div>
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="text-center animate-bounce">
+        <a href="#capture" className="inline-flex flex-col items-center text-gray-400 hover:text-gray-600 transition-colors">
+          <ChevronDown className="h-6 w-6" />
+          <span className="text-xs mt-1">Scroll to explore</span>
+        </a>
       </div>
 
       <WaitlistModal
